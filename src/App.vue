@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <NavBar/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-
-export default {
+import NavBar from './components/NavBar' 
+export default{
   components: {
     NavBar
   }
@@ -13,12 +15,24 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Anton', sans-serif;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 50px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: rgb(75, 61, 134);
+}
+
+#nav a.router-link-exact-active {
+  color: #826aef;
 }
 </style>
