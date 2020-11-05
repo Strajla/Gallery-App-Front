@@ -4,10 +4,7 @@ import MainPage from "../components/MainPage.vue";
 import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import YourGalleries from "../components/YourGalleries.vue";
-import CreatingGalleries from "../components/CreatingGalleries.vue"
-
-
-
+import CreatingGalleries from "../components/CreatingGalleries.vue";
 
 Vue.use(VueRouter);
 
@@ -15,33 +12,31 @@ const routes = [
   {
     path: "/",
     name: "main-page",
-    component: MainPage
+    component: MainPage,
   },
 
   {
     path: "/your-galleries",
     name: "your-galleries",
-    component: YourGalleries
-
+    component: YourGalleries,
   },
 
   {
     path: "/creating-galleries",
     name: "creating-galleries",
-    component: CreatingGalleries
-
+    component: CreatingGalleries,
   },
 
   {
     path: "/login",
     name: "login",
-    component: Login
+    component: Login,
   },
 
   {
     path: "/register",
     name: "register",
-    component: Register
+    component: Register,
   },
 ];
 

@@ -5,12 +5,12 @@
 
         <form id="loginForm" @submit.prevent="submit">
             <div class="form-group">
-                <label for="email">Email:</label> <br>
+                <label for="email">Email</label> <br>
                 <input v-model="email" class="form-control" id="email" type="email" placeholder="Enter your email here...">
             </div>
 
             <div class="form-group">
-                <label for="password">Password:</label> <br>
+                <label for="password">Password</label> <br>
                 <input v-model="password" class="form-control" id="password"  type="password" placeholder="Enter your password here...">
             </div>
 

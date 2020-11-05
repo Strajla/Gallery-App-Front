@@ -4,6 +4,23 @@
       <div id="mainpage">
         <router-link to="/" class="navbar-brand">Main Page</router-link>
       </div>
+      <div id="yourgalleries">
+        <router-link
+          to="/your-galleries"
+          class="navbar-brand"
+          v-if="isUserAuthenticated"
+          >Your Galleries</router-link
+        >
+      </div>
+      <div id="create">
+        <router-link
+          to="/creating"
+          class="navbar-brand"
+          v-if="isUserAuthenticated"
+          >Create your Gallery</router-link
+        >
+      </div>
+
       <div id="otherpages">
         <router-link
           to="/login"
