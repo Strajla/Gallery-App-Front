@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import authService from "../services/AuthService";
+
 export default {
   namespaced: true,
   state: {
@@ -47,6 +49,23 @@ export default {
       } catch (exception) {
         context.commit("setErrors", exception);
       }
+    },
+
+    async register(context, user) {
+      try {
+        const response = await axios.post(
+          "http://localhost:8000/api/register",
+          user
+        );
+        return response;
+      } catch (exception) {
+        context.commit("setErrors", exception);
+      }
+    },
+    fetchUser(context, id) {
+      return authService.get(id).then((response) => {
+        context.commit("setUser", response.data);
+      });
     },
 
     logout(context) {
