@@ -5,10 +5,10 @@
         <router-link to="/" class="navbar-brand">Main Page</router-link>
       </div>
       <div id="otherpages">
-        <router-link to="/register" class="navbar-brand register"
-          >Register</router-link
+        <router-link to="/login" class="navbar-brand login"
+          >Login</router-link
         >
-        <router-link to="/login" class="navbar-brand login">Login</router-link>
+        <router-link to="/register" class="navbar-brand register">Register</router-link>
       </div>
     </div>
   </div>
@@ -18,7 +18,9 @@
 export default {
   name: "NavBar",
 
-  components: {},
+  components: {
+      
+  }
 };
 </script>
 
