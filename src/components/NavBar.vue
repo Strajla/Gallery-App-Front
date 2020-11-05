@@ -5,10 +5,11 @@
         <router-link to="/" class="navbar-brand">Main Page</router-link>
       </div>
       <div id="otherpages">
-        <router-link to="/login" class="navbar-brand login"
+        <router-link to="/login" class="navbar-brand login" v-if="!isUserAuthenticated"
           >Login</router-link
         >
-        <router-link to="/register" class="navbar-brand register">Register</router-link>
+        <router-link to="/register" class="navbar-brand register" v-if="!isUserAuthenticated">Register</router-link>
+        <button v-if="isUserAuthenticated" @click="onLogout" type="button" class="btn btn-alert btn-sm">Log out</button>
       </div>
     </div>
   </div>
