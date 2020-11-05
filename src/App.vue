@@ -23,8 +23,9 @@ export default{
   color: #2c3e50;
 }
 
-#nav {
-  padding: 50px;
+#container {
+  display: flex;
+  justify-content: space-between;
 }
 
 #nav a {
