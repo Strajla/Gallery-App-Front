@@ -51,12 +51,7 @@
       <p>
         {{ comment.user_id }} <span>{{ comment.text }}</span>
       </p>
-      <button
-        v-if="isUserAuthenticated && comment.user_id == loggedUser.id"
-        @click="deleteComment(comment.id)"
-      >
-        Delete
-      </button>
+    <button v-if="isUserAuthenticated && comment.user_id == loggedUser.id" @click="deleteComment(comment.id)">Delete</button>
     </div>
     <div class>
       <div class="row">

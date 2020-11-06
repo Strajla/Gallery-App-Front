@@ -32,8 +32,13 @@ export const actions = {
     state.commit('addComment', data);
 },
 
+deleteComment(state, id) {
+  galleries.deleteComment(id);
+  state.commit('deleteComment', id)
+},
+
  deleteGallery(state, id) {
     galleries.deleteGallery(id);
     state.commit('deleteGallery', id)
 },
-};
+}
