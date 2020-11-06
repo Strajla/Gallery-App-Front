@@ -34,7 +34,8 @@
           v-if="!isUserAuthenticated"
           >Register</router-link
         >
-        <button
+        <button id="logout" 
+          
           v-if="isUserAuthenticated"
           @click="onLogout"
           type="button"
@@ -86,5 +87,14 @@ export default {
   letter-spacing: 1.8px;
   border-bottom: solid 1px #d3f802;
   text-transform: uppercase;
+}
+
+#logout {
+  text-shadow: 3px 3px 3px red, 2px 2px 1px red;
+  background: #eeeeee;
+  letter-spacing: 1.4px;  
+  text-transform: uppercase;
+  font-size: large;
+  
 }
 </style>

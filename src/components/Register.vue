@@ -123,7 +123,7 @@ export default {
           "First name value you provided is incorrect or to short, please try again."
         );
       }
-      if (!this.last_name || this.last_name.length < 6) {
+      if (!this.last_name) {
         this.errors.push(
           "Last name value you provided is incorrect or to short, please try again."
         );
@@ -148,19 +148,21 @@ export default {
         );
       }
 
-      if (!this.errors.length) {
-        const user = {
+      this.register ({
           first_name: this.first_name,
           last_name: this.last_name,
           email: this.email,
           password: this.password,
           password_confirmation: this.password_confirmation,
-        };
-        this.register(user);
-        this.$router.push("/main-page");
-      } else {
-        console.log("Unsecssfull registration");
-      }
+
+           }).then(() => {
+                    if(this.errors === null) {
+                       this.$router.push({ name: "main-page"});
+                    } else {
+                      console.log('error in your request');
+                    }
+                   
+                });
     },
   },
 };
