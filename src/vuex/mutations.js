@@ -1,14 +1,15 @@
 export const mutations = {
-    setGalleries(state, payload) {
-        state.galleries = payload
-    },
+  setGalleries(state, payload) {
+    state.galleries = payload;
+  },
 
-    getGallery(state, id) {
-        state.galleries = state.galleries.filter(galleries=> galleries.id === id)
-},
+  getGallery(state, id) {
+    state.galleries = state.galleries.filter(
+      (galleries) => galleries.id === id
+    );
+  },
 
-setImages(state, payload) {
-    state.images =payload
-}
-
-}
+  setImages(state, payload) {
+    state.images = payload;
+  },
+};

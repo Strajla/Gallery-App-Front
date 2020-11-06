@@ -18,3 +18,5 @@ class Images {
     }
 
 }
+
+export const images = new Images();
