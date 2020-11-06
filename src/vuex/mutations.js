@@ -33,7 +33,13 @@ deleteComment(state, id) {
   state.comments = state.comments.filter(comments => comments.id !== id)
 },
 
+
 deleteGallery(state,id) {
     state.galleries = state.galleries.filter(galleries => galleries.id !== id);
 },
+
+setSearchText(state, searchText) {
+  state.searchText = searchText;
+},
+
 };
