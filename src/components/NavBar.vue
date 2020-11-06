@@ -24,18 +24,18 @@
       <div id="otherpages">
         <router-link
           to="/login"
-          class="navbar-brand login"
+          class="btn btn-warning"
           v-if="!isUserAuthenticated"
           >Login</router-link
         >
         <router-link
           to="/register"
-          class="navbar-brand register"
+          class="btn btn-primary"
           v-if="!isUserAuthenticated"
           >Register</router-link
         >
-        <button id="logout" 
-          
+        <button
+          id="logout"
           v-if="isUserAuthenticated"
           @click="onLogout"
           type="button"
@@ -92,9 +92,8 @@ export default {
 #logout {
   text-shadow: 3px 3px 3px red, 2px 2px 1px red;
   background: #eeeeee;
-  letter-spacing: 1.4px;  
+  letter-spacing: 1.4px;
   text-transform: uppercase;
   font-size: large;
-  
 }
 </style>
