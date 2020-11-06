@@ -24,4 +24,12 @@ export const mutations = {
   addGallery(state, payload) {
     state.galleries = payload;
   },
+
+  addComment(state, payload) {
+    state.comments = payload
+},
+
+deleteGallery(state,id) {
+    state.galleries = state.galleries.filter(galleries => galleries.id !== id);
+},
 };

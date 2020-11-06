@@ -26,4 +26,14 @@ export const actions = {
     const data = galleries.add();
     state.commit("addGallery", data);
   },
+
+  addComment(state) {
+    const data = galleries.addComment();
+    state.commit('addComment', data);
+},
+
+ deleteGallery(state, id) {
+    galleries.deleteGallery(id);
+    state.commit('deleteGallery', id)
+},
 };
