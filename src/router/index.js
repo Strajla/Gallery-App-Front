@@ -6,7 +6,7 @@ import Register from "../components/Register.vue";
 import YourGalleries from "../components/YourGalleries.vue";
 import CreatingGalleries from "../components/CreatingGalleries.vue";
 import Gallery from "../components/Gallery";
-import Creator from "../components/Author";
+import Author from "../components/Author";
 
 Vue.use(VueRouter);
 

@@ -12,4 +12,12 @@ export const mutations = {
   setImages(state, payload) {
     state.images = payload;
   },
+
+  setAuthors(state, payload) {
+    state.authors = payload;
+  },
+
+  getAuthor(state, id) {
+    state.authors = state.authors.filter((authors) => authors.id === id);
+  },
 };
