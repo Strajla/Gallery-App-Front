@@ -11,7 +11,7 @@
             <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
           </ul>
         </div>
-        
+
         <input
           v-model="first_name"
           type="text"
@@ -79,7 +79,9 @@
           </label>
         </div>
       </div>
-      <div v-if="error" class="alert alert-danger" role="alert">Error message</div>
+      <div v-if="error" class="alert alert-danger" role="alert">
+        Error message
+      </div>
       <div class="form-group">
         <button type="submit" class="btn btn-success btn-lg btn-block">
           Register Now
@@ -87,8 +89,7 @@
       </div>
     </form>
     <div class="text-center">
-      
-Already have an account? <a href="/login">Sign in here</a>
+      Already have an account? <a href="/login">Sign in here</a>
     </div>
   </div>
 </template>
@@ -148,21 +149,19 @@ export default {
         );
       }
 
-      this.register ({
-          first_name: this.first_name,
-          last_name: this.last_name,
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.password_confirmation,
-
-           }).then(() => {
-                    if(this.errors === null) {
-                       this.$router.push({ name: "main-page"});
-                    } else {
-                      console.log('error in your request');
-                    }
-                   
-                });
+      this.register({
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.password_confirmation,
+      }).then(() => {
+        if (this.errors === null) {
+          this.$router.push({ name: "main-page" });
+        } else {
+          console.log("error in your request");
+        }
+      });
     },
   },
 };
