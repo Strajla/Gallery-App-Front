@@ -5,8 +5,9 @@ import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import YourGalleries from "../components/YourGalleries.vue";
 import CreatingGalleries from "../components/CreatingGalleries.vue";
-import Gallery from "../components/Gallery";
-import Author from "../components/Author";
+import Gallery from "../components/Gallery.vue";
+import EditGallery from '../components/EditGallery.vue'
+import Author from "../components/Author.vue";
 
 Vue.use(VueRouter);
 
@@ -22,6 +23,13 @@ const routes = [
     name: "gallery",
     component: Gallery,
   },
+
+  {
+    path: '/edit-gallery/:id',
+    name: 'edit-gallery',
+    component: EditGallery
+  },
+
 
   {
     path: "/authors/:id",

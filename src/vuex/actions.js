@@ -22,11 +22,6 @@ export const actions = {
     state.commit("getAuthor", data);
   },
 
-  addGallery(state) {
-    const data = galleries.add();
-    state.commit("addGallery", data);
-  },
-
   addComment(state) {
     const data = galleries.addComment();
     state.commit('addComment', data);
