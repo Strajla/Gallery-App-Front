@@ -3,10 +3,11 @@ export const mutations = {
     state.galleries = payload;
   },
 
-  getGallery(state, id) {
-    state.galleries = state.galleries.filter(
-      (galleries) => galleries.id === id
-    );
+  setGallery(state, gallery) {
+    console.log('Gallery mutation', { gallery })
+    state.gallery = gallery
+
+
   },
 
   setImages(state, payload) {
@@ -27,6 +28,11 @@ export const mutations = {
 
   addComment(state, payload) {
     state.comments = payload
+
+  },
+
+  setComments(state, payload) {
+      state.comments = payload;
 },
 
 deleteComment(state, id) {
