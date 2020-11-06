@@ -15,7 +15,7 @@ import {mapActions} from 'vuex'
 export default {
      data() {
         return {
-            galleries:[],
+            gallery:[],
         }
     },
     async created() {
