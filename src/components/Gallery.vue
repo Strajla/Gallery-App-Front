@@ -28,12 +28,17 @@
         </b-carousel-slide>
       </b-carousel>
     </div>
+
+    <h3>Comments:</h3>
+    <div v-for="comment in gallery.comments" :key="comment.id">
+      <p>{{ comment.text }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 import { galleries } from "../services/Galleries";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -45,6 +50,11 @@ export default {
   },
   methods: {
     ...mapActions(["getOne"]),
+  },
+  computed: {
+    ...mapGetters({
+      authors: "authors",
+    }),
   },
 };
 </script>

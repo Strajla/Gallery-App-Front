@@ -20,4 +20,8 @@ export const mutations = {
   getAuthor(state, id) {
     state.authors = state.authors.filter((authors) => authors.id === id);
   },
+
+  addGallery(state, payload) {
+    state.galleries = payload;
+  },
 };

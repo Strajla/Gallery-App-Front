@@ -1,9 +1,54 @@
 <template>
-  <div></div>
+  <div>
+    <h1>Your Galleries</h1>
+    <h2>{{ gallery.name }}</h2>
+    <p>{{ gallery.created_at }}</p>
+    <p>{{ gallery.description }}</p>
+    <div>
+      <b-carousel
+        id="carousel-1"
+        :interval="4000"
+        controls
+        indicators
+        background="#ababab"
+        img-width="1024"
+        img-height="480"
+        style="text-shadow: 1px 1px 2px #333;"
+      >
+        <b-carousel-slide
+          v-for="(image, index) in gallery.images"
+          :key="index"
+          :img-src="image.source"
+          alt="Card image cap"
+        >
+        </b-carousel-slide>
+      </b-carousel>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+import { galleries } from "../services/Galleries";
+import { mapActions, mapGetters } from "vuex";
+
+export default {
+  data() {
+    return {
+      gallery: [],
+    };
+  },
+  async created() {
+    this.gallery = (await galleries.getOne(this.$route.params.id)).data;
+  },
+  methods: {
+    ...mapActions(["getOne"]),
+  },
+  computed: {
+    ...mapGetters({
+      user: "auth/user",
+    }),
+  },
+};
 </script>
 
 <style></style>

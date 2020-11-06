@@ -4,9 +4,14 @@
     <div>
       <h3>{{ author.first_name }}</h3>
       <div v-for="author in author.galleries" :key="author.id">
-        <h4>{{author.name}}</h4>
-        <p>{{author.description}}</p>
-        <h5>{{author.created_at}}</h5>
+        <h4>{{ author.name }}</h4>
+        <p>{{ author.description }}</p>
+        <h5>{{ author.created_at }}</h5>
+        <img
+          class="card-img-top"
+          :src="author.images[0].source"
+          alt="Card image cap"
+        />
       </div>
     </div>
   </div>
@@ -24,7 +29,7 @@ export default {
 
   async created() {
     this.author = (await authors.getOne(this.$route.params.id)).data;
-    console.log(this.author)
+    console.log(this.author);
   },
 
   methods: {

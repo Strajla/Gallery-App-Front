@@ -157,7 +157,7 @@ export default {
         password_confirmation: this.password_confirmation,
       }).then(() => {
         if (this.errors === null) {
-          this.$router.push({ name: "main-page" });
+          this.$router.push({ name: "login" });
         } else {
           console.log("error in your request");
         }
