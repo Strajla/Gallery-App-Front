@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="gallery">
     <h1>Gallery</h1>
     <h2>{{ gallery.name }}</h2>
     <h4>
@@ -89,6 +89,9 @@
 <script>
 import { galleries } from "../services/Galleries";
 import { mapActions, mapGetters } from "vuex";
+
+import { store } from "../vuex/store";
+
 export default {
   data() {
     return {
@@ -97,10 +100,11 @@ export default {
       errors: [],
     };
   },
-  created() {
-    this.getOne(this.$route.params.id);
-    this.getLoggedUser();
+  beforeRouteEnter(to, from, next) {
+    console.log("before route enter", { to });
+    store.dispatch("getOne", to.params.id).then(() => next());
   },
+
   methods: {
     ...mapActions({
       getOne: "getOne",
@@ -130,7 +134,7 @@ export default {
       isUserAuthenticated: "auth/isUserAuthenticated",
       loggedUser: "auth/loggedUser",
       comments: "comments",
-      gallery: "gallery"
+      gallery: "gallery",
     }),
   },
 };

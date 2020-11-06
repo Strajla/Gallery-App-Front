@@ -6,6 +6,13 @@ export const actions = {
     const data = await galleries.getAll();
     state.commit("setGalleries", data);
   },
+
+
+  async yourGalleries(state) {
+    const data = await galleries.yourGalleries();
+    state.commit('setYourGalleries', data)
+},
+
   async getOne(state, id) {
     const { comments, ...gallery } = await galleries.getOne(id);
     console.log('got response', { comments, gallery })
@@ -18,9 +25,9 @@ export const actions = {
     state.commit("setImages", data);
   },
 
-  getOneAuthor(state) {
-    const data = authors.getOne();
-    state.commit("getAuthor", data);
+  getOneAuthor(state, id) {
+    const data = authors.getOne(id);
+    state.commit('setAuthor', data)
   },
 
   addComment(state) {

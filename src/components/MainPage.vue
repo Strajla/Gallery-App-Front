@@ -1,41 +1,56 @@
 <template>
   <div>
     <h2>Main Page</h2>
-    
-    <div class="d-flex justify-content-around flex-wrap">
 
-        <gallery-card v-for="(gallery,index) in filteredGalleries" :key="index"
+    <div class="d-flex justify-content-around flex-wrap">
+      <gallery-card
+        v-for="(gallery, index) in galleries"
+        :key="index"
         :gallery="gallery"
       >
       </gallery-card>
+      <div v-if="!galleries.length">
+        <h1>Sorry, there is no gallery</h1>
+      </div>
     </div>
+    <button @click="handleLoad">Load more...</button>
   </div>
 </template>
 
 <script>
-import GalleryCard from './GalleryCard'
-import {mapGetters, mapActions} from 'vuex'
+import GalleryCard from "./GalleryCard";
+import { mapGetters, mapActions } from "vuex";
 export default {
-      components: {
-        GalleryCard
-      },
-    created() {
-      this.fetchGalleries();
-    },
-      computed: {
-      ...mapGetters({
+  data() {
+    return {
+      pagination: 10,
+      currentSize: 10,
+    };
+  },
 
-          filteredGalleries: "filteredGalleries",
-          galleries: 'galleries'
-      }),
-      },
-    methods: {
-      ...mapActions( {
-          fetchGalleries: 'fetchGalleries',
-
+  components: {
+    GalleryCard,
+  },
+  created() {
+    this.fetchGalleries();
+  },
+  computed: {
+    ...mapGetters({
+      filteredGalleries: "filteredGalleries",
+      galleries: "galleries",
     }),
+  },
+  methods: {
+    ...mapActions({
+      fetchGalleries: "fetchGalleries",
+    }),
+
+    handleLoad() {
+      this.currentSize += this.pagination;
+      this.fetchGalleries(this.currentSize);
     },
-}
+  },
+};
 </script>
 
 <style>

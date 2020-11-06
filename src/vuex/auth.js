@@ -29,8 +29,8 @@ export default {
             state.token = token
         },
         setLoggedUser(state, payload) {
-            state.loggedUser = payload,
-            console.log('successfull mutation', state.loggedUser)
+            state.loggedUser = payload
+
         },
         setErrors(state, errors) {
             state.errors = errors

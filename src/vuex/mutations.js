@@ -4,11 +4,14 @@ export const mutations = {
   },
 
   setGallery(state, gallery) {
-    console.log('Gallery mutation', { gallery })
     state.gallery = gallery
 
 
   },
+
+  setYourGalleries(state, payload) {
+    state.galleries= payload
+},
 
   setImages(state, payload) {
     state.images = payload;
@@ -18,7 +21,7 @@ export const mutations = {
     state.authors = payload;
   },
 
-  getAuthor(state, id) {
+  settAuthor(state, id) {
     state.authors = state.authors.filter((authors) => authors.id === id);
   },
 
@@ -44,8 +47,5 @@ deleteGallery(state,id) {
     state.galleries = state.galleries.filter(galleries => galleries.id !== id);
 },
 
-setSearchText(state, searchText) {
-  state.searchText = searchText;
-},
 
 };

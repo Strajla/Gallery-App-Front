@@ -21,10 +21,7 @@
         >
       </div>
 
-  
-        
-      <input @input="handleSearchTextChange" v-if="isUserAuthenticated"/>
-
+      <input @input="handleSearchTextChange" v-if="isUserAuthenticated" />
 
       <div id="otherpages">
         <router-link
@@ -33,7 +30,7 @@
           v-if="!isUserAuthenticated"
           >Login</router-link
         >
-        
+
         <router-link
           to="/register"
           class="btn btn-primary"
@@ -55,7 +52,7 @@
 </template>
 
 <script>
-import {mapGetters, mapActions, mapMutations} from 'vuex'
+import { mapGetters, mapActions, mapMutations } from "vuex";
 
 export default {
   name: "NavBar",
@@ -66,17 +63,14 @@ export default {
       isUserAuthenticated: "auth/isUserAuthenticated",
 
       filteredGalleries: "filteredGalleries",
-        galleries: "galleries"
+      galleries: "galleries",
     }),
   },
   methods: {
-
-       ...mapMutations([
-      'setSearchText'
-    ]),
+    ...mapMutations(["setSearchText"]),
     handleSearchTextChange(event) {
-         this.setSearchText(event.target.value)
-        },
+      this.setSearchText(event.target.value);
+    },
 
     ...mapActions({
       logout: "auth/logout",

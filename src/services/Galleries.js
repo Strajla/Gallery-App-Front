@@ -12,10 +12,16 @@ class Galleries {
     });
   }
   async getAll() {
-    const response = await axios.get("/galleries");
+    const response = await axios.get('/galleries')
 
     return response.data;
   }
+  async yourGalleries() {
+    const response = await axios.get('/your-galleries')
+
+    return response.data
+}
+
 
   add(data) {
     return axios.post("/galleries", data);
