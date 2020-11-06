@@ -5,7 +5,8 @@ import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import YourGalleries from "../components/YourGalleries.vue";
 import CreatingGalleries from "../components/CreatingGalleries.vue";
-import Gallery from '../components/Gallery'
+import Gallery from "../components/Gallery";
+import Creator from "../components/Author";
 
 Vue.use(VueRouter);
 
@@ -17,9 +18,15 @@ const routes = [
   },
 
   {
-    path: '/galleries/:id',
-    name: 'gallery',
-    component: Gallery
+    path: "/galleries/:id",
+    name: "gallery",
+    component: Gallery,
+  },
+
+  {
+    path: "/authors/:id",
+    name: "authors",
+    component: Author,
   },
 
   {
