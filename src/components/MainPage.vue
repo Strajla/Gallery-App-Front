@@ -1,36 +1,28 @@
 <template>
   <div>
-    <div>
-      <h1>Main Page Galleries</h1>
-      <ul v-for="gallerie in galleries" :key="gallerie.id">
-        <div id="gallery-bio">
-          <li>{{ gallerie.name }}</li>
-          <li>{{ gallerie.description }}</li>
-          <li>{{ gallerie.user_id }}</li>
-          <li>{{ gallerie.user.first_name }}</li>
-          <li>{{ gallerie.images[0].source }}</li>
-          <img
-            class="card-img-top"
-            :src="gallerie.images[1].source"
-            alt="Card image cap"
-          />
-        </div>
-      </ul>
-    </div>
+    <gallery-card
+      v-for="(gallery, index) in galleries"
+      :key="index"
+      :gallery="gallery"
+    >
+    </gallery-card>
   </div>
 </template>
 
 <script>
+import GalleryCard from './GalleryCard'
 import { mapGetters, mapActions } from "vuex";
 export default {
-  props: {
-    gallerie: Object,
-  },
+  components: {
+        GalleryCard
+      },
   computed: {
-    ...mapGetters(["galleries"]),
+    ...mapGetters([
+      'galleries'
+      ]),
   },
   methods: {
-    ...mapActions(["fetchGalleries"]),
+    ...mapActions(['fetchGalleries']),
   },
   created() {
     this.fetchGalleries();
