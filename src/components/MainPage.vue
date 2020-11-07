@@ -10,7 +10,7 @@
       >
       </gallery-card>
       <div v-if="!galleries.length">
-        <h1>Sorry, there is no gallery</h1>
+        <h1>We are out of any galleries</h1>
       </div>
     </div>
     <button @click="handleLoad">Load more...</button>

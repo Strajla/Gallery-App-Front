@@ -4,14 +4,12 @@ export const mutations = {
   },
 
   setGallery(state, gallery) {
-    state.gallery = gallery
-
-
+    state.gallery = gallery;
   },
 
   setYourGalleries(state, payload) {
-    state.galleries= payload
-},
+    state.galleries = payload;
+  },
 
   setImages(state, payload) {
     state.images = payload;
@@ -30,22 +28,20 @@ export const mutations = {
   },
 
   addComment(state, payload) {
-    state.comments = payload
-
+    state.comments = payload;
   },
 
   setComments(state, payload) {
-      state.comments = payload;
-},
+    state.comments = payload;
+  },
 
-deleteComment(state, id) {
-  state.comments = state.comments.filter(comments => comments.id !== id)
-},
+  deleteComment(state, id) {
+    state.comments = state.comments.filter((comments) => comments.id !== id);
+  },
 
-
-deleteGallery(state,id) {
-    state.galleries = state.galleries.filter(galleries => galleries.id !== id);
-},
-
-
+  deleteGallery(state, id) {
+    state.galleries = state.galleries.filter(
+      (galleries) => galleries.id !== id
+    );
+  },
 };

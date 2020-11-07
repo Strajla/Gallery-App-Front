@@ -6,7 +6,7 @@ import Register from "../components/Register.vue";
 import YourGalleries from "../components/YourGalleries.vue";
 import CreatingGalleries from "../components/CreatingGalleries.vue";
 import Gallery from "../components/Gallery.vue";
-import EditGallery from '../components/EditGallery.vue'
+import EditGallery from "../components/EditGallery.vue";
 import Author from "../components/Author.vue";
 
 Vue.use(VueRouter);
@@ -25,11 +25,10 @@ const routes = [
   },
 
   {
-    path: '/edit-gallery/:id',
-    name: 'edit-gallery',
-    component: EditGallery
+    path: "/edit-gallery/:id",
+    name: "edit-gallery",
+    component: EditGallery,
   },
-
 
   {
     path: "/authors/:id",

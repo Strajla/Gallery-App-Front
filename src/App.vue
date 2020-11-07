@@ -1,24 +1,24 @@
 <template>
   <div id="app">
-    <NavBar/>
-    <router-view/>
+    <NavBar />
+    <router-view />
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar' 
-export default{
+import NavBar from "./components/NavBar";
+export default {
   components: {
-    NavBar
-  }
-}
+    NavBar,
+  },
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
 #app {
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   text-align: center;
   color: #2c3e50;
 }

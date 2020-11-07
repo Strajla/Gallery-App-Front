@@ -1,37 +1,37 @@
 import Vuex from "vuex";
-import Vue from 'vue'
-import {mutations} from './mutations'
-import {actions} from './actions'
-import auth from './auth'
-import comment from './comment'
+import Vue from "vue";
+import { mutations } from "./mutations";
+import { actions } from "./actions";
+import auth from "./auth";
+import comment from "./comment";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    state: {
-        galleries: [],
-        gallery: null,
-        images: [],
-        authors: [],
-        comments: [],
+  state: {
+    galleries: [],
+    gallery: null,
+    images: [],
+    authors: [],
+    comments: [],
+  },
+
+  getters: {
+    galleries: ({ galleries }) => galleries,
+    gallery: ({ gallery }) => {
+      console.log("gett", { gallery });
+      return gallery;
     },
+    images: ({ images }) => images,
+    authors: ({ authors }) => authors,
+    comments: ({ comments }) => comments,
+  },
 
-    getters: {
-        galleries: ({galleries}) => galleries,
-        gallery: ({gallery}) => {console.log('gett', { gallery }); return gallery},
-        images: ({images}) => images,
-        authors: ({authors}) => authors,
-        comments: ({comments}) => comments,
+  mutations,
+  actions,
 
-
-
-    },
-
-    mutations,
-    actions,
-
-    modules: {
-        auth,
-        comment
-    }
-}) 
+  modules: {
+    auth,
+    comment,
+  },
+});
