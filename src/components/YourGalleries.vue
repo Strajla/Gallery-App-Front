@@ -4,8 +4,8 @@
     <h3>{{ loggedUser.last_name }} {{ loggedUser.first_name }}</h3>
 
     <div class="d-flex justify-content-center">
-            <SearchGallery @handleSearchText="setSearchText"/>
-        </div>
+      <SearchGallery @handleSearchText="setSearchText" />
+    </div>
 
     <div class="d-flex justify-content-around flex-wrap">
       <div v-for="gallery in yourGalleries" :key="gallery.id">
@@ -17,8 +17,13 @@
             class="card-img-top"
             :src="gallery.images[0].source"
             alt="Card image cap"
-          >
-          <h3 class="card-title"><router-link :to="{ name: 'authors', params: {id: gallery.user.id }}">{{gallery.name}}</router-link></h3>
+          />
+          <h3 class="card-title">
+            <router-link
+              :to="{ name: 'authors', params: { id: gallery.user.id } }"
+              >{{ gallery.name }}</router-link
+            >
+          </h3>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">{{ gallery.description }}</li>
             <li class="list-group-item">{{ gallery.created_at }}</li>
@@ -27,27 +32,29 @@
       </div>
     </div>
 
-   <button class="btn btn-danger" v-if="currentSize <= numberPerPage" @click="loadMoreGalleries">Load More</button>
-
+    <button
+      class="btn btn-danger"
+      v-if="currentSize <= numberPerPage"
+      @click="loadMoreGalleries"
+    >
+      Load More
+    </button>
   </div>
 </template>
 
 <script>
-import SearchGallery from './SearchGallery'
+import SearchGallery from "./SearchGallery";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-
   components: {
-    SearchGallery
+    SearchGallery,
   },
 
   data() {
     return {
-      
       currentSize: 10,
-      searchText: '',
-
+      searchText: "",
     };
   },
   async created() {
@@ -56,35 +63,39 @@ export default {
   },
   methods: {
     ...mapActions({
-      getYourGalleries: 'getYourGalleries',
+      getYourGalleries: "getYourGalleries",
 
       getLoggedUser: "auth/getLoggedUser",
     }),
 
-
-       loadMoreGalleries() {
-            this.currentSize += 10
-            this.getYourGalleries({'pagination': this.currentSize, 'searchText': this.searchText})
-        },
-        setSearchText(search) {
-                this.searchText = search
-                this.getYourGalleries({'pagination': this.currentSize, 'searchText': this.searchText})
-        },
-        
+    loadMoreGalleries() {
+      this.currentSize += 10;
+      this.getYourGalleries({
+        pagination: this.currentSize,
+        searchText: this.searchText,
+      });
     },
-    beforeRouteEnter(to, from, next) {
-            next(vm => {
-                vm.getYourGalleries({'pagination':10, 'searchText': ''});
-            })
-      },
+    setSearchText(search) {
+      this.searchText = search;
+      this.getYourGalleries({
+        pagination: this.currentSize,
+        searchText: this.searchText,
+      });
+    },
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      vm.getYourGalleries({ pagination: 10, searchText: "" });
+    });
+  },
 
   computed: {
     ...mapGetters({
       authors: "authors",
       isUserAuthenticated: "auth/isUserAuthenticated",
       loggedUser: "auth/loggedUser",
-      yourGalleries: 'yourGalleries',
-      numberPerPage: 'numberPerPage'
+      yourGalleries: "yourGalleries",
+      numberPerPage: "numberPerPage",
     }),
   },
 };
