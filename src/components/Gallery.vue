@@ -1,14 +1,10 @@
 <template>
   <div v-if="gallery">
     <h1>Gallery</h1>
-    <h2>{{ gallery.name }}</h2>
-    <h4>
-      <router-link :to="{ name: 'authors', params: { id: gallery.user.id } }"
-        >{{ gallery.user.first_name }} {{ gallery.user.last_name }}</router-link
-      >
-    </h4>
-    <p>{{ gallery.created_at }}</p>
-    <p>{{ gallery.description }}</p>
+    <h2> Gallery: {{ gallery.name }}</h2>
+    <h4>Author: <router-link :to="{ name: 'authors', params: {id: gallery.user.id }}">{{gallery.user.first_name}} {{gallery.user.last_name}}</router-link></h4>
+    <p>Created_at: {{gallery.created_at}}</p>
+    <div class="description">Description: {{gallery.description}}</div>
     <div class="card-body">
       <button
         type="button"
@@ -50,19 +46,14 @@
         </b-carousel-slide>
       </b-carousel>
     </div>
-
-    <h3>Comments</h3>
-    <div v-for="comment in comments" :key="comment.id">
-      <p>{{ comment.text }}</p>
-      <button
-        v-if="isUserAuthenticated && comment.user_id == loggedUser.id"
-        @click="deleteComment(comment.id)"
-      >
-        Delete
-      </button>
+ <div class="row">     
+            <h3>Comments:</h3>
+            <div v-for="comment in comments" :key="comment.id" >
+                <p>Comment:   {{comment.text}}</p> 
+            <button v-if="isUserAuthenticated && comment.user_id == loggedUser.id" @click="deleteComment(comment.id)">Delete</button>
+    
     </div>
-    <div class>
-      <div class="row">
+      <div>
         <form
           @submit.prevent="onSubmit"
           class="form-inline"
@@ -73,7 +64,7 @@
             placeholder="Write your comment here!"
             class="pb-cmnt-textarea"
           ></textarea>
-          <button class="btn btn-primary pull-right" type="submit">
+          <button class="btn btn-primary add" type="submit">
             Add Comment
           </button>
           <div class="alert alert-danger" v-if="errors.length">
@@ -95,7 +86,6 @@ import { store } from "../vuex/store";
 export default {
   data() {
     return {
-      // gallery:[],
       text: "",
       errors: [],
     };
@@ -142,5 +132,21 @@ export default {
 <style scoped>
 .row {
   margin-left: 600px;
+          margin-left: 500px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
 }
+
+ .row textarea {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 400px;
+    }
+    .add {
+        margin-left: 130px;
+    }
+    .description {
+        font-size: 30px;;
+    }
 </style>

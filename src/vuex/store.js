@@ -3,7 +3,7 @@ import Vue from "vue";
 import { mutations } from "./mutations";
 import { actions } from "./actions";
 import auth from "./auth";
-import comment from "./comment";
+
 
 Vue.use(Vuex);
 
@@ -37,6 +37,5 @@ export const store = new Vuex.Store({
 
   modules: {
     auth,
-    comment,
   },
 });
