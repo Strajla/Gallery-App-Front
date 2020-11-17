@@ -9,7 +9,8 @@ export const mutations = {
   },
 
   setYourGalleries(state, payload) {
-    state.galleries = payload;
+    state.galleries = payload[1];
+    state.numberPerPage = payload[2];
   },
 
   setImages(state, payload) {

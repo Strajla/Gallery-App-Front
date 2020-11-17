@@ -3,11 +3,9 @@ import axios from "axios";
 class Galleries {
   constructor() {
     axios.defaults.baseURL = "http://localhost:8000/api";
-    axios.interceptors.request.use(function(config) {
-      const token = localStorage.getItem("token");
-      if (token) {
-        config.headers.Authoratization = "Bearer " + token;
-      }
+    axios.interceptors.request.use(function (config) {
+      const token = localStorage.getItem('token')
+      config.headers.Authorization = 'Bearer '+ token;
       return config;
     });
   }
@@ -21,8 +19,13 @@ class Galleries {
   })
     return response.data;
   }
-  async yourGalleries() {
-    const response = await axios.get('/your-galleries')
+  async yourGalleries(payload) {
+    const response = await axios.get('/your-galleries', {
+      headers: {
+        'pagination': payload.pagination,
+        'searchText': payload.searchText
+    }
+  })  
 
     return response.data
 }

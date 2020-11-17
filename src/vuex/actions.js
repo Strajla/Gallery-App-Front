@@ -7,8 +7,8 @@ export const actions = {
     state.commit("setGalleries", data);
   },
 
-  async yourGalleries(state) {
-    const data = await galleries.yourGalleries();
+  async getYourGalleries(state, payload) {
+    const data = await galleries.yourGalleries(payload);
     state.commit("setYourGalleries", data);
   },
 

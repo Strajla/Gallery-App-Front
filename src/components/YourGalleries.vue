@@ -3,8 +3,12 @@
     <h1>Your Galleries</h1>
     <h3>{{ loggedUser.last_name }} {{ loggedUser.first_name }}</h3>
 
+    <div class="d-flex justify-content-center">
+            <SearchGallery @handleSearchText="setSearchText"/>
+        </div>
+
     <div class="d-flex justify-content-around flex-wrap">
-      <div v-for="gallery in loggedUser.galleries" :key="gallery.id">
+      <div v-for="gallery in yourGalleries" :key="gallery.id">
         <div
           class="card"
           style="width: 300px; height: 800px; margin-bottom: 30px;"
@@ -22,37 +26,65 @@
         </div>
       </div>
     </div>
+
+   <button class="btn btn-danger" v-if="currentSize <= numberPerPage" @click="loadMoreGalleries">Load More</button>
+
   </div>
 </template>
 
 <script>
-// import { galleries } from "../services/Galleries";
+import SearchGallery from './SearchGallery'
 import { mapActions, mapGetters } from "vuex";
 
 export default {
+
+  components: {
+    SearchGallery
+  },
+
   data() {
     return {
-      // gallery: [],
+      
+      currentSize: 10,
+      searchText: '',
+
     };
   },
   async created() {
-    this.myGalleries();
     // this.gallery = (await galleries.getOne(this.$route.params.id)).data;
     this.getLoggedUser();
   },
   methods: {
     ...mapActions({
-      yourGalleries: "yourGalleries",
+      getYourGalleries: 'getYourGalleries',
 
       getLoggedUser: "auth/getLoggedUser",
     }),
-  },
+
+
+       loadMoreGalleries() {
+            this.currentSize += 10
+            this.getYourGalleries({'pagination': this.currentSize, 'searchText': this.searchText})
+        },
+        setSearchText(search) {
+                this.searchText = search
+                this.getYourGalleries({'pagination': this.currentSize, 'searchText': this.searchText})
+        },
+        
+    },
+    beforeRouteEnter(to, from, next) {
+            next(vm => {
+                vm.getYourGalleries({'pagination':10, 'searchText': ''});
+            })
+      },
+
   computed: {
     ...mapGetters({
       authors: "authors",
       isUserAuthenticated: "auth/isUserAuthenticated",
       loggedUser: "auth/loggedUser",
-      gallery: "gallery",
+      yourGalleries: 'yourGalleries',
+      numberPerPage: 'numberPerPage'
     }),
   },
 };

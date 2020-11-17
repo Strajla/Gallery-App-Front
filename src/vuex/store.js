@@ -14,6 +14,7 @@ export const store = new Vuex.Store({
     images: [],
     authors: [],
     comments: [],
+    yourGalleries: [],
     numberPerPage: Number
   },
 
@@ -26,6 +27,7 @@ export const store = new Vuex.Store({
     images: ({ images }) => images,
     authors: ({ authors }) => authors,
     comments: ({ comments }) => comments,
+    yourGalleries: ({yourGalleries}) =>yourGalleries,
     numberPerPage: ({numberPerPage}) => numberPerPage,
 
   },
