@@ -21,8 +21,6 @@
         >
       </div>
 
-      <input @input="handleSearchTextChange" v-if="isUserAuthenticated" />
-
       <div id="otherpages">
         <router-link
           to="/login"
@@ -52,7 +50,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapMutations } from "vuex";
+import { mapGetters, mapActions} from "vuex";
 
 export default {
   name: "NavBar",
@@ -62,15 +60,10 @@ export default {
     ...mapGetters({
       isUserAuthenticated: "auth/isUserAuthenticated",
 
-      filteredGalleries: "filteredGalleries",
       galleries: "galleries",
     }),
   },
   methods: {
-    ...mapMutations(["setSearchText"]),
-    handleSearchTextChange(event) {
-      this.setSearchText(event.target.value);
-    },
 
     ...mapActions({
       logout: "auth/logout",

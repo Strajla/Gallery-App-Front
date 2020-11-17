@@ -1,43 +1,44 @@
 <template>
   <div>
-    <h2>Main Page</h2>
-
+     <div class="searchBar">
+        <h1>All Galleries</h1>
+      <div>
+        <SearchGallery @handleSearchText="setSearchText"/>
+      </div>
+      </div>
     <div class="d-flex justify-content-around flex-wrap">
       <gallery-card
-        v-for="(gallery, index) in galleries"
-        :key="index"
+        v-for="gallery in galleries"
+        :key="gallery.id"
         :gallery="gallery"
+        
       >
       </gallery-card>
-      <div v-if="!galleries.length">
-        <h1>We are out of any galleries</h1>
-      </div>
     </div>
-    <button @click="handleLoad">Load more...</button>
+    <button class="btn btn-danger" v-if="currentSize <= numberPerPage" @click="loadMoreGalleries">Load More...</button>
   </div>
 </template>
 
 <script>
+import SearchGallery from './SearchGallery'
 import GalleryCard from "./GalleryCard";
 import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      pagination: 10,
+      searchText: '',
       currentSize: 10,
     };
   },
 
   components: {
     GalleryCard,
-  },
-  created() {
-    this.fetchGalleries();
+    SearchGallery
   },
   computed: {
     ...mapGetters({
-      filteredGalleries: "filteredGalleries",
-      galleries: "galleries",
+      galleries: 'galleries',
+      numberPerPage: 'numberPerPage'
     }),
   },
   methods: {
@@ -45,17 +46,31 @@ export default {
       fetchGalleries: "fetchGalleries",
     }),
 
-    handleLoad() {
-      this.currentSize += this.pagination;
-      this.fetchGalleries(this.currentSize);
+   loadMoreGalleries() {
+      this.currentSize += 10
+      this.fetchGalleries({'pagination': this.currentSize, 'searchText': this.searchText})
     },
-  },
-};
+    setSearchText(search) {
+      this.searchText = search
+      this.fetchGalleries({'pagination': this.currentSize, 'searchText': this.searchText})
+    }
+    },
+    beforeRouteEnter(to, from, next) {
+            next(vm => {
+                vm.fetchGalleries({'pagination':10, 'searchText': ''});
+            })
+      }
+}
 </script>
 
 <style>
 #gallery-bio {
   display: flexbox;
+  justify-content: space-between;
+}
+
+.searchBar {
+  display: flex;
   justify-content: space-between;
 }
 </style>

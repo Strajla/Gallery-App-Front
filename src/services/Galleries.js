@@ -11,9 +11,14 @@ class Galleries {
       return config;
     });
   }
-  async getAll() {
-    const response = await axios.get('/galleries')
+  async getAll(payload) {
+    const response = await axios.get('/galleries', {
+    headers: {
+      'pagination': payload.pagination,
+      'searchText': payload.searchText
+    }
 
+  })
     return response.data;
   }
   async yourGalleries() {
